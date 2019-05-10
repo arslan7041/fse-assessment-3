@@ -12,10 +12,10 @@ public class UserEvent {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
 
-    String type;
-    String userId;
-    long timestamp;
-    String context;
+    private String type;
+    private String userId;
+    private long timestamp;
+    private String context;
 
     public UserEvent(Integer id, String type, String userId, long timestamp, String context) {
         this.id = id;
