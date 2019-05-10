@@ -4,6 +4,9 @@ import com.demo.assessment3.models.UserEvent;
 import com.demo.assessment3.respositories.UserEventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserEventService {
 
     private UserEventRepository userEventRepository;
@@ -13,7 +16,15 @@ public class UserEventService {
         this.userEventRepository = userEventRepository;
     }
 
-    public void addEvent(UserEvent userEvent) {
+    public void save(UserEvent userEvent) {
         userEventRepository.save(userEvent);
+    }
+
+    public List<UserEvent> findByUserId(String userId) {
+        return userEventRepository.findByUserId(userId);
+    }
+
+    public List<UserEvent> findWithinTimeFrame(String first, String second) {
+        return userEventRepository.findWithinTimeFrame(first, second);
     }
 }

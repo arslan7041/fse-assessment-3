@@ -3,9 +3,9 @@ package com.demo.assessment3.controllers;
 import com.demo.assessment3.models.UserEvent;
 import com.demo.assessment3.services.UserEventService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class UserEventController {
@@ -15,9 +15,19 @@ public class UserEventController {
 
     @PostMapping("UserEvents/getEvent")
     public void addEvent(@RequestBody UserEvent userEvent){
-        userEventService.addEvent(userEvent);
+        userEventService.save(userEvent);
     }
 
+
+    @GetMapping("UserEvents/getEventsById/{userId}")
+    public List<UserEvent> findByUserId(@PathVariable String userId){
+        return userEventService.findByUserId(userId);
+    }
+
+    @GetMapping("UserEvents/getEventsWithinTimeFrame/{first}/{second}")
+    public List<UserEvent> findWithinTimeFrame(@PathVariable String first, @PathVariable String second){
+        return userEventService.findWithinTimeFrame(first, second);
+    }
 
 
 
