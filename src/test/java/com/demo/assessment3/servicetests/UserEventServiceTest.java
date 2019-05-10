@@ -44,20 +44,13 @@ public class UserEventServiceTest {
     }
 
     @Test
-    public void filterProductsByBrand_returnsProductsWithThatBrand() {
-        String brand = "gucci";
+    public void findWithinTimeFrame_givesEventsWithinTimeFrame() {
+         long t1 = 1500000000;
+         long t2 = 1600000000;
         //act
-        productService.filterByBrand(brand);
+        userEventService.findWithinTimeFrame(t1, t2);
         //assert
-        verify(productRepository, times(1)).findByBrand(brand);
+        verify(userEventRepository, times(1)).findWithinTimeFrame(t1, t2);
     }
 
-    @Test
-    public void filterProductsByPrice_returnsProductsWithThatPrice() {
-        String price = "1650.0";
-        //act
-        productService.filterByPrice(price);
-        //assert
-        verify(productRepository, times(1)).findByPrice(Double.valueOf(price).doubleValue());
-    }
 }

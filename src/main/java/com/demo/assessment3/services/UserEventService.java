@@ -24,7 +24,7 @@ public class UserEventService {
         return userEventRepository.findByUserId(userId);
     }
 
-    public List<UserEvent> findWithinTimeFrame(String first, String second) {
+    public List<UserEvent> findWithinTimeFrame(long first, long second) {
         return userEventRepository.findWithinTimeFrame(first, second);
     }
 }

@@ -12,5 +12,5 @@ public interface UserEventRepository extends MongoRepository<UserEvent, Integer>
     List<UserEvent> findByUserId(String userId);
 
     @Query(value = "select * from UserEvent u where u.timestamp > ?1 and u.timestamp < ?2", nativeQuery = true)
-    List<UserEvent> findWithinTimeFrame(@Param("timestamp1") String timestanp1, @Param("timestamp2") String timestamp2);
+    List<UserEvent> findWithinTimeFrame(@Param("timestamp1") long timestanp1, @Param("timestamp2") long timestamp2);
 }
